@@ -23,7 +23,7 @@ linkedList.next = new LinkedListNode(2)
 linkedList.next.next = new LinkedListNode(3)
 
 // Now take a look at the linked list
-console.log(linkedList)
+// console.log(linkedList)
 
 // Try to implement the following functions that work on a linked list
 // Make sure to check bound of the list
@@ -137,13 +137,33 @@ function insert(list, n, value) {
  * @param {*} value 
  */
 function add(list, value) {
-  const node = new LinkedListNode(value);
   if (list == null) {
-    list = new LinkedList()
-    list.head = node;
-    return list;
+    return;
   }
-  let end = list.find(list.size - 1);
+  const node = new LinkedListNode(value);
+  if (list.head == null) {
+    // list = new LinkedList()
+    list.head = node;
+    list.size++;
+    // console.log('adding...');
+    return;
+  }
+  let end = find(list, list.size - 1);
+  // if (end == null) {
+  //   list.head = node;
+  //   list.size++;
+  //   return;
+  // }
   end.next = node;
   list.size++; 
+}
+
+module.exports = {
+  LinkedList,
+  LinkedListNode,
+  add,
+  find,
+  insert,
+  add,
+  length,
 }
